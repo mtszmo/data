@@ -12,4 +12,3 @@ path_descarga = './dataset_destino'
 
 # Descarga el archivo zip
 api.dataset_download_files(dataset, path=path_descarga, unzip=True)
-print(f"¡Listo! Dataset guardado y descomprimido en: {path_descarga}")
