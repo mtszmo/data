@@ -2,9 +2,17 @@ import os
 import pandas as pd
 from sqlalchemy import create_engine, text 
 from pathlib import Path
+from dotenv import load_sheet, load_dotenv
 
-# Configurar la conexión a tu MySQL local
-engine = create_engine('mysql+pymysql://newuser:abc@localhost/olist_ecommerce')
+load_dotenv()
+
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
+host = os.getenv("DB_HOST")
+db = os.getenv("DB_NAME")
+
+# Crear la conexión usando las variables
+engine = create_engine(f'mysql+pymysql://{user}:{password}@{host}/{db}')
 
 # Definir la carpeta donde se guardó los CSV descargados
 home = Path.home()

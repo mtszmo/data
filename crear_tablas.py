@@ -1,7 +1,17 @@
 from sqlalchemy import create_engine, text
+import os
+from sqlalchemy import create_engine
+from dotenv import load_sheet, load_dotenv
 
-# 1. Configurar la conexión a tu MySQL local
-engine = create_engine('mysql+pymysql://newuser:abc@localhost/olist_ecommerce')
+load_dotenv()
+
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
+host = os.getenv("DB_HOST")
+db = os.getenv("DB_NAME")
+
+# Crear la conexión usando las variables
+engine = create_engine(f'mysql+pymysql://{user}:{password}@{host}/{db}')
 
 script_sql = """
 CREATE TABLE IF NOT EXISTS product_category_name_translation (
@@ -99,7 +109,7 @@ CREATE TABLE IF NOT EXISTS order_reviews (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 """
 
-# 3. Conectarse y ejecutar comando por comando
+# Conectarse y ejecutar comando por comando
 with engine.begin() as conexion:
     for comando in script_sql.split(";"):
         if comando.strip(): # Evita mandar comandos vacíos

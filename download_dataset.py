@@ -2,11 +2,11 @@ import os
 import zipfile
 from kaggle.api.kaggle_api_extended import KaggleApi
 
-# 1. Autenticar con la API
+# Autenticar con la API
 api = KaggleApi()
 api.authenticate()
 
-# 2. Definir el dataset 
+# Definir el dataset 
 dataset = 'olistbr/brazilian-ecommerce'
 path_descarga = './dataset_destino'
 
