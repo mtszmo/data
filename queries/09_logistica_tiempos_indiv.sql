@@ -4,7 +4,7 @@ SELECT
     c.customer_state,
     o.order_estimated_delivery_date,
     o.order_delivered_customer_date,
-    DATEDIFF(o.order_delivered_customer_date, o.order_estimated_delivery_date) AS dias_anticipacion,
+    DATEDIFF(o.order_estimated_delivery_date, o.order_delivered_customer_date) AS dias_anticipacion,
     r.review_score
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
